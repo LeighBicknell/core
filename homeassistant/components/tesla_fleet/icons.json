@@ -334,6 +334,15 @@
     }
   },
   "services": {
+    "add_charge_schedule": {
+      "service": "mdi:calendar-plus"
+    },
+    "add_precondition_schedule": {
+      "service": "mdi:hvac"
+    },
+    "get_schedules": {
+      "service": "mdi:calendar-search"
+    },
     "navigate_to_coordinates": {
       "service": "mdi:crosshairs-gps"
     },
@@ -342,6 +351,12 @@
     },
     "navigate_to_waypoints": {
       "service": "mdi:map-marker-path"
+    },
+    "remove_charge_schedule": {
+      "service": "mdi:calendar-minus"
+    },
+    "remove_precondition_schedule": {
+      "service": "mdi:hvac-off"
     }
   }
 }

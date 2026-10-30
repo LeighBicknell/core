@@ -619,6 +619,9 @@
     "invalid_data": {
       "message": "Received invalid data"
     },
+    "missing_schedule_time": {
+      "message": "A charge schedule needs a start time, an end time, or both."
+    },
     "missing_scope_energy_cmds": {
       "message": "Missing energy commands scope."
     },
@@ -648,6 +651,17 @@
     }
   },
   "selector": {
+    "days_of_week": {
+      "options": {
+        "friday": "[%key:common::time::friday%]",
+        "monday": "[%key:common::time::monday%]",
+        "saturday": "[%key:common::time::saturday%]",
+        "sunday": "[%key:common::time::sunday%]",
+        "thursday": "[%key:common::time::thursday%]",
+        "tuesday": "[%key:common::time::tuesday%]",
+        "wednesday": "[%key:common::time::wednesday%]"
+      }
+    },
     "region": {
       "options": {
         "eu": "Europe, Middle East & Africa",
@@ -656,6 +670,96 @@
     }
   },
   "services": {
+    "add_charge_schedule": {
+      "description": "Adds or modifies a charge schedule on a vehicle.",
+      "fields": {
+        "days_of_week": {
+          "description": "Days the schedule runs on.",
+          "name": "Days of week"
+        },
+        "device_id": {
+          "description": "Vehicle to add the schedule to.",
+          "name": "Vehicle"
+        },
+        "enable": {
+          "description": "Whether the schedule is active.",
+          "name": "Enable"
+        },
+        "end_time": {
+          "description": "Time to stop charging. At least one of start time or end time is required.",
+          "name": "End time"
+        },
+        "id": {
+          "description": "ID of an existing schedule to modify. Leave empty to add a new schedule.",
+          "name": "Schedule ID"
+        },
+        "location": {
+          "description": "Location where the schedule applies. Defaults to the Home Assistant location.",
+          "name": "Location"
+        },
+        "name": {
+          "description": "Name of the schedule.",
+          "name": "Name"
+        },
+        "one_time": {
+          "description": "Run the schedule only once, then disable it.",
+          "name": "One time"
+        },
+        "start_time": {
+          "description": "Time to start charging. At least one of start time or end time is required.",
+          "name": "Start time"
+        }
+      },
+      "name": "Add charge schedule"
+    },
+    "add_precondition_schedule": {
+      "description": "Adds or modifies a precondition schedule on a vehicle.",
+      "fields": {
+        "days_of_week": {
+          "description": "Days the schedule runs on.",
+          "name": "Days of week"
+        },
+        "device_id": {
+          "description": "Vehicle to add the schedule to.",
+          "name": "Vehicle"
+        },
+        "enable": {
+          "description": "Whether the schedule is active.",
+          "name": "Enable"
+        },
+        "id": {
+          "description": "ID of an existing schedule to modify. Leave empty to add a new schedule.",
+          "name": "Schedule ID"
+        },
+        "location": {
+          "description": "Location where the schedule applies. Defaults to the Home Assistant location.",
+          "name": "Location"
+        },
+        "name": {
+          "description": "Name of the schedule.",
+          "name": "Name"
+        },
+        "one_time": {
+          "description": "Run the schedule only once, then disable it.",
+          "name": "One time"
+        },
+        "precondition_time": {
+          "description": "Time the cabin should be ready.",
+          "name": "Precondition time"
+        }
+      },
+      "name": "Add precondition schedule"
+    },
+    "get_schedules": {
+      "description": "Returns the charge and precondition schedules configured on a vehicle.",
+      "fields": {
+        "device_id": {
+          "description": "Vehicle to get the schedules from.",
+          "name": "Vehicle"
+        }
+      },
+      "name": "Get schedules"
+    },
     "navigate_to_coordinates": {
       "description": "Sets vehicle navigation to the provided latitude/longitude coordinates.",
       "fields": {
@@ -697,6 +801,34 @@
         }
       },
       "name": "Navigate to waypoints"
+    },
+    "remove_charge_schedule": {
+      "description": "Removes a charge schedule from a vehicle.",
+      "fields": {
+        "device_id": {
+          "description": "Vehicle to remove the schedule from.",
+          "name": "Vehicle"
+        },
+        "id": {
+          "description": "ID of the schedule to remove, as returned by the Get schedules action.",
+          "name": "Schedule ID"
+        }
+      },
+      "name": "Remove charge schedule"
+    },
+    "remove_precondition_schedule": {
+      "description": "Removes a precondition schedule from a vehicle.",
+      "fields": {
+        "device_id": {
+          "description": "Vehicle to remove the schedule from.",
+          "name": "Vehicle"
+        },
+        "id": {
+          "description": "ID of the schedule to remove, as returned by the Get schedules action.",
+          "name": "Schedule ID"
+        }
+      },
+      "name": "Remove precondition schedule"
     }
   }
 }
